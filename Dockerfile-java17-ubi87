@@ -15,9 +15,9 @@ RUN jlink --output runtime --add-modules `paste -sd, - < modules` --compress 2 -
 
 FROM registry.access.redhat.com/ubi8/ubi:8.7 AS java-base
 LABEL maintainer="OpsMx"
-COPY --from=java-builder /jrebuild/runtime /opsmx-java11-runtime
+COPY --from=java-builder /jrebuild/runtime /opsmx-java-runtime
 ARG OPSMXUSER=1001
-ENV JAVA_HOME=/opsmx-java11-runtime \
-    PATH=${PATH}:/opsmx-java11-runtime/bin \
+ENV JAVA_HOME=/opsmx-java-runtime \
+    PATH=${PATH}:/opsmx-java-runtime/bin \
     WORK_DIR=/opsmx/workdir \
     CONF_DIR=/opsmx/conf
